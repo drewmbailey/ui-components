@@ -1,0 +1,130 @@
+.mega-nav {
+  background: #333;
+  color: white;
+  position: relative;
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 1rem;
+
+    li {
+      position: relative;
+
+      a {
+        display: block;
+        padding: 1rem;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          background: #444;
+        }
+      }
+
+      .menu-toggle::after {
+        content: ' ▼';
+        font-size: 0.8em;
+      }
+    }
+
+    .has-mega-menu .mega-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      color: #333;
+      padding: 2rem;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+    }
+
+    .has-mega-menu:hover .mega-menu {
+      display: flex;
+    }
+  }
+
+  .menu-column {
+    flex: 1;
+    min-width: 200px;
+
+    h4 {
+      margin-bottom: 0.5em;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.5em;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  // Mobile styles
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
+    }
+
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      background: #333;
+      width: 100%;
+
+      &.open {
+        display: flex;
+      }
+
+      li {
+        border-top: 1px solid #444;
+
+        .mega-menu {
+          display: none;
+          flex-direction: column;
+          position: static;
+          padding: 1rem;
+
+          .menu-column {
+            margin-bottom: 1rem;
+          }
+        }
+
+        &.open .mega-menu {
+          display: flex;
+        }
+      }
+    }
+
+    .has-mega-menu:hover .mega-menu {
+      display: none; // disable hover on mobile
+    }
+  }
+}

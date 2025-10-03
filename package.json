@@ -1,0 +1,14 @@
+{
+  "name": "ui-components-sass",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve .",
+    "build": "npx sass src/main.scss dist/style.css",
+    "watch": "npx sass --watch src/main.scss dist/style.css --embed-source-map --source-map-urls=relative"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "sass": "^1.93.2"
+  }
+}
