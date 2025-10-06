@@ -1,0 +1,210 @@
+// Inspired by https://css-tricks.com/the-most-hated-css-feature-cos-and-sin/
+
+.trig-menu {
+  margin: 3em 0;
+
+  &__description {
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 2em;
+
+    &-code {
+      background: #f4f4f4;
+      border-radius: 4px;
+      color: #e74c3c;
+      font-family: "Courier New", monospace;
+      padding: 0.2em 0.4em;
+    }
+  }
+
+  &__nav {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin: 2em 0;
+    padding: 2em;
+
+    &-title {
+      color: white;
+      font-size: 1.5em;
+      margin-bottom: 2em;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.circular-menu {
+  --radius: 120px;
+  height: 300px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 300px;
+
+  @media (max-width: 768px) {
+    --radius: 100px;
+    height: 250px;
+    width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    --radius: 80px;
+    height: 200px;
+    width: 200px;
+  }
+
+  &__item {
+    --rotation: calc(360deg / var(--total) * var(--i));
+    animation: fadeInUp 0.6s ease-out calc(var(--i) * 0.1s) both;
+    height: 60px;
+    left: 50%;
+    margin: -30px 0 0 -30px; 
+    position: absolute;
+    top: 50%;
+    transform: translateX(calc(cos(var(--rotation)) * var(--radius)))
+      translateY(calc(sin(var(--rotation)) * var(--radius)));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 60px;
+
+    &--active {
+      z-index: 10;
+    }
+
+    &--collapsed {
+      opacity: 0.3 !important;
+      pointer-events: none !important;
+      transform: translateX(0) translateY(0) !important;
+
+      .circular-menu__link {
+        background: rgba(255, 255, 255, 0.3) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        transform: scale(0.8) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      height: 50px;
+      margin: -25px 0 0 -25px;
+      width: 50px;
+    }
+
+    @media (max-width: 480px) {
+      height: 45px;
+      margin: -22.5px 0 0 -22.5px;
+      width: 45px;
+    }
+  }
+
+  &__link {
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: #333;
+    display: flex;
+    font-size: 0.75em;
+    font-weight: 600;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+
+    @media (max-width: 768px) {
+      font-size: 0.8em;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.7em;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      color: #667eea;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__center {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+  }
+
+  &__center-btn {
+    align-items: center;
+    background-color: #d44334;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 1em;
+    height: 60px;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 60px;
+    
+    @media (max-width: 768px) {
+      font-size: 0.75em;
+      height: 60px;
+      width: 60px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.75em;
+      height: 50px;
+      width: 50px;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+      box-shadow: 0 10px 30px rgba(192, 57, 43, 0.6);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &--expanded {
+      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          #2ecc71 0%,
+          #27ae60 100%
+        ) !important;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(calc(cos(var(--rotation)) * var(--radius)))
+      translateY(calc(sin(var(--rotation)) * var(--radius) + 20px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(calc(cos(var(--rotation)) * var(--radius)))
+      translateY(calc(sin(var(--rotation)) * var(--radius)));
+  }
+}
+
+

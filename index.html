@@ -1,110 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UI Component Gallery</title>
-  <link rel="stylesheet" href="dist/style.css" />
-</head>
-<body>
-  <header>
-    <h1>UI Component Gallery</h1>
-    <nav>
-      <a href="#buttons">Buttons</a>
-      <a href="#form">Form Elements</a>
-      <a href="#tabs">Tabs</a>
-      <a href="#modal">Modal</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Component Gallery</title>
+    <link rel="stylesheet" href="dist/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">UI Component Gallery</h1>
+      <nav class="header__nav">
+        <a href="#sin-cos-menu" class="header__nav-link">CSS Trigonometric Functions Menu</a>
+      </nav>
+    </header>
 
-  <main>
-    <nav class="mega-nav">
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        ☰
-      </button>
+    <main class="main">
+      <section id="sin-cos-menu" class="section trig-menu">
+        <h2 class="section__title">CSS Trigonometric Functions Menu</h2>
+        <p class="trig-menu__description">
+          This menu uses CSS
+          <code class="trig-menu__description-code">sin()</code>
+          and
+          <code class="trig-menu__description-code">cos()</code>
+          functions to create a circular layout. Each menu item is positioned using trigonometric calculations based on the unit circle.
+        </p>
 
-      <ul class="nav-menu">
-        <li><a href="#">Home</a></li>
+        <nav class="trig-menu__nav">
+          <ul class="circular-menu" style="--total: 8">
+            <li class="circular-menu__item" style="--i: 0">
+              <a href="#home" class="circular-menu__link">Home</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 1">
+              <a href="#about" class="circular-menu__link">About</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 2">
+              <a href="#services" class="circular-menu__link">Services</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 3">
+              <a href="#portfolio" class="circular-menu__link">Portfolio</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 4">
+              <a href="#blog" class="circular-menu__link">Blog</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 5">
+              <a href="#contact" class="circular-menu__link">Contact</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 6">
+              <a href="#gallery" class="circular-menu__link">Gallery</a>
+            </li>
+            <li class="circular-menu__item" style="--i: 7">
+              <a href="#news" class="circular-menu__link">News</a>
+            </li>
+            <li class="circular-menu__center">
+              <button class="circular-menu__center-btn">Close</button>
+            </li>
+          </ul>
+        </nav><!-- /.trig-menu__nav-->
+      </section><!-- /.trig-menu-->
 
-        <li class="has-mega-menu">
-          <a href="#" class="menu-toggle">Products</a>
-          <div class="mega-menu">
-            <div class="menu-column">
-              <h4>Category 1</h4>
-              <ul>
-                <li><a href="#">Product A</a></li>
-                <li><a href="#">Product B</a></li>
-              </ul>
-            </div>
-            <div class="menu-column">
-              <h4>Category 2</h4>
-              <ul>
-                <li><a href="#">Product C</a></li>
-                <li><a href="#">Product D</a></li>
-              </ul>
-            </div>
-            <div class="menu-column">
-              <h4>Featured</h4>
-              <p>Highlight new or important products here.</p>
-              <a href="#" class="btn primary">Shop Now</a>
-            </div>
-          </div>
-        </li>
+    </main><!-- /.main-->
 
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-
-
-    <section id="buttons">
-      <h2>Buttons</h2>
-      <button class="btn primary">Primary</button>
-      <button class="btn secondary">Secondary</button>
-      <button class="btn icon">🔍 Icon Button</button>
-    </section>
-
-    <section id="form">
-      <h2>Form Elements</h2>
-      <label>
-        Name:
-        <input type="text" placeholder="Enter your name" />
-      </label>
-      <label>
-        Choose:
-        <select>
-          <option>Option A</option>
-          <option>Option B</option>
-        </select>
-      </label>
-      <label>
-        Toggle Switch:
-        <input type="checkbox" class="toggle" />
-      </label>
-    </section>
-
-    <section id="tabs">
-      <h2>Tabs</h2>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab(0)">Tab 1</button>
-        <button class="tab" onclick="switchTab(1)">Tab 2</button>
-      </div>
-      <div class="tab-content active">Content for Tab 1</div>
-      <div class="tab-content">Content for Tab 2</div>
-    </section>
-
-    <section id="modal">
-      <h2>Modal</h2>
-      <button onclick="openModal()">Open Modal</button>
-      <div class="modal hidden" id="modalBox">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
-          <p>This is a modal window</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+    <script src="dist/main.js"></script>
+  </body>
 </html>

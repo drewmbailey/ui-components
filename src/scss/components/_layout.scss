@@ -1,0 +1,35 @@
+@use "../utils/variables";
+
+.header {
+  background: variables.$text-color;
+  color: white;
+  padding: 1em;
+
+  &__nav {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-link {
+    margin-right: 1em;
+    color: #ddd;
+    text-decoration: none;
+  }
+
+  &__title {
+    margin: 0 0 1em 0;
+  }
+}
+
+.main {
+  padding: 2em;
+}
+
+.section {
+  margin-bottom: 3em;
+
+  &__title {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5em;
+  }
+}

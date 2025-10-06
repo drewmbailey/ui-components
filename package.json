@@ -2,14 +2,22 @@
   "name": "ui-components-sass",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"serve .\" \"npm run watch\"",
-    "build": "npx sass src/main.scss dist/style.css",
-    "watch": "npx sass --watch src/main.scss dist/style.css --embed-source-map --source-map-urls=relative"
+    "start": "npx concurrently \"npx live-server --port=3000 --open=/index.html\" \"npm run watch\"",
+    "dev": "npx concurrently \"npx live-server --port=3000 --open=/index.html --watch=dist\" \"npm run watch\"",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "npx sass src/main.scss dist/style.css",
+    "build:js": "npx esbuild src/js/main.js --bundle --format=esm --outdir=dist --target=es2020 --sourcemap",
+    "watch": "npx concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "watch:css": "npx sass --watch src/main.scss dist/style.css --embed-source-map --source-map-urls=relative",
+    "watch:js": "npx esbuild src/js/main.js --bundle --format=esm --outdir=dist --target=es2020 --sourcemap --watch"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "concurrently": "^8.2.2",
+    "esbuild": "^0.25.10",
+    "live-server": "^1.2.2",
     "postcss": "^8.5.6",
-    "sass": "^1.93.2"
+    "sass": "^1.93.2",
+    "serve": "^14.2.5"
   }
 }
