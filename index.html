@@ -9,23 +9,42 @@
   <body>
     <header class="header">
       <h1 class="header__title">UI Component Gallery</h1>
-      <nav class="header__nav">
-        <a href="#sin-cos-menu" class="header__nav-link">CSS Trigonometric Functions Menu</a>
-      </nav>
+
+      <div class="navigation">
+        <input class="navigation__toggle" type="checkbox" id="navigation-toggle" />
+        <label class="navigation__icon" for="navigation-toggle">
+          <span class="navigation__icon-line" />
+        </label>
+
+        <nav class="navigation__menu">
+          <a 
+            class="navigation__item" 
+            href="#sin-cos-menu"
+          >
+            CSS Trigonometric Functions Menu
+          </a>
+          <a 
+            class="navigation__item" 
+            href="#test"
+          >
+            3D Tilt Cards
+          </a>
+        </nav>
+      </div>
     </header>
 
     <main class="main">
-      <section id="sin-cos-menu" class="section trig-menu">
+      <section id="sin-cos-menu" class="section sin-cos-menu">
         <h2 class="section__title">CSS Trigonometric Functions Menu</h2>
-        <p class="trig-menu__description">
+        <p class="sin-cos-menu__description">
           This menu uses CSS
-          <code class="trig-menu__description-code">sin()</code>
+          <code class="sin-cos-menu__description-code">sin()</code>
           and
-          <code class="trig-menu__description-code">cos()</code>
+          <code class="sin-cos-menu__description-code">cos()</code>
           functions to create a circular layout. Each menu item is positioned using trigonometric calculations based on the unit circle.
         </p>
 
-        <nav class="trig-menu__nav">
+        <nav class="sin-cos-menu__nav">
           <ul class="circular-menu" style="--total: 8">
             <li class="circular-menu__item" style="--i: 0">
               <a href="#home" class="circular-menu__link">Home</a>
@@ -55,8 +74,38 @@
               <button class="circular-menu__center-btn">Close</button>
             </li>
           </ul>
-        </nav><!-- /.trig-menu__nav-->
-      </section><!-- /.trig-menu-->
+        </nav><!-- /.sin-cos-menu__nav-->
+      </section><!-- /.sin-cos-menu-->
+
+      <section class="tilt-card-section section">
+        <h2 class="section__title">3D Tilt Cards</h2>
+
+        <div class="tilt-card-section__cards">
+          <div class="card simple" tabindex="0" aria-label="Simple CSS tilt card">
+            <span class="tag">CSS‑only</span>
+            <h3>Simple 3D Tilt</h2>
+            <p>Hover or focus to see a smooth perspective tilt, inner glow, and sheen. No JavaScript.</p>
+          </div>
+
+          <div class="card has-tilt" tabindex="0" aria-label=":has() cursor‑aware tilt card">
+            <span class="tag">:has() + zones</span>
+            <h3>Cursor‑Aware Tilt</h2>
+            <p>Hover or focus to see a smooth perspective tilt, inner glow, and sheen. No JavaScript.</p>
+            <p>Move your cursor across the card. Nine invisible hover zones drive <code>--rx</code>/<code>--ry</code> via <code>:has()</code>.</p>
+            <div class="zones" aria-hidden="true">
+              <div class="zone z-tl"></div>
+              <div class="zone z-tc"></div>
+              <div class="zone z-tr"></div>
+              <div class="zone z-ml"></div>
+              <div class="zone z-mm"></div>
+              <div class="zone z-mr"></div>
+              <div class="zone z-bl"></div>
+              <div class="zone z-bc"></div>
+              <div class="zone z-br"></div>
+            </div>
+          </div>
+        </div>
+      </section>      
 
     </main><!-- /.main-->
 

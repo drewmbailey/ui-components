@@ -5,6 +5,7 @@
 @use "scss/utils/base";
 
 // Import component styles
+@use "scss/components/navigation";
 @use "scss/components/layout";
 @use "scss/components/sin-cos-menu";
-
+@use "scss/components/tilt-card";

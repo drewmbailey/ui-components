@@ -3,6 +3,8 @@
 .header {
   background: variables.$text-color;
   color: white;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
 
   &__nav {
@@ -17,7 +19,7 @@
   }
 
   &__title {
-    margin: 0 0 1em 0;
+    margin: 0;
   }
 }
 

@@ -29,20 +29,24 @@ export function initTrigMenu() {
         closeButton.style.pointerEvents = "auto";
         closeButton.style.opacity = "1";
       }
-    }, 2000); 
+    }, 1000); 
 
     // Menu item click functionality
-    menuItems.forEach((item, index) => {
+    menuItems.forEach((item) => {
       const link = item.querySelector(".circular-menu__link");
-
+      
       link.addEventListener("click", function (e) {
         e.preventDefault();
 
-        // Add active state
-        menuItems.forEach((li) =>
-          li.classList.remove("circular-menu__item--active")
-        );
-        item.classList.add("circular-menu__item--active");
+        // Add/remove active state
+        const ItemActive = item.classList.contains("circular-menu__item--active");
+        
+        menuItems.forEach((li) => {
+          li.classList.remove("circular-menu__item--active");
+        });
+        if (!ItemActive) {
+          item.classList.add("circular-menu__item--active");
+        } 
       });
 
       link.addEventListener("mouseleave", function () {
@@ -59,6 +63,10 @@ export function initTrigMenu() {
         if (closeButton.disabled) {
           return;
         }
+
+        menuItems.forEach((li) => {
+          li.classList.remove("circular-menu__item--active");
+        });
 
         if (isCollapsed) {
           // Expand menu items
@@ -182,92 +190,7 @@ export function initTrigMenu() {
       });
     }
 
-    // Add CSS for pulse effect
-    addTrigMenuStyles();
   }
 }
 
-// @TODO: Move to SCSS
-function addTrigMenuStyles() {
-  const style = document.createElement("style");
-  style.textContent = `
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    
-    @keyframes slideToCenter {
-      0% {
-        transform: translateX(calc(cos(var(--rotation)) * var(--radius)))
-                   translateY(calc(sin(var(--rotation)) * var(--radius)))
-                   scale(1);
-        opacity: 1;
-        z-index: 1;
-      }
-      70% {
-        transform: translateX(calc(cos(var(--rotation)) * var(--radius) * 0.1))
-                   translateY(calc(sin(var(--rotation)) * var(--radius) * 0.1))
-                   scale(0.9);
-        opacity: 1;
-        z-index: 1;
-      }
-      100% {
-        transform: translateX(0) translateY(0) scale(0.8);
-        opacity: 0;
-        z-index: -1;
-      }
-    }
-    
-    @keyframes slideFromCenter {
-      0% {
-        transform: translateX(0) translateY(0) scale(0.8);
-        opacity: 0;
-        z-index: -1;
-      }
-      30% {
-        transform: translateX(calc(cos(var(--rotation)) * var(--radius) * 0.1))
-                   translateY(calc(sin(var(--rotation)) * var(--radius) * 0.1))
-                   scale(0.9);
-        opacity: 1;
-        z-index: 1;
-      }
-      100% {
-        transform: translateX(calc(cos(var(--rotation)) * var(--radius)))
-                   translateY(calc(sin(var(--rotation)) * var(--radius)))
-                   scale(1);
-        opacity: 1;
-        z-index: 1;
-      }
-    }
-    
-    .circular-menu__item--collapsing {
-      animation: slideToCenter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      pointer-events: none;
-    }
-    
-    .circular-menu__item--expanding {
-      animation: slideFromCenter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      pointer-events: none;
-    }
-    
-    .circular-menu__item--active .circular-menu__link {
-      background: rgba(102, 126, 234, 0.9) !important;
-      color: white !important;
-      transform: scale(1.15) !important;
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4) !important;
-    }
-    
-    .circular-menu__item--initialized {
-      animation: none !important;
-    }
-  `;
-  document.head.appendChild(style);
-}
 

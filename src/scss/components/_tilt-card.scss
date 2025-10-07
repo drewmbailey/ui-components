@@ -1,0 +1,232 @@
+:root {
+  --bg: hsl(238 22% 10%);
+  --panel: hsl(238 22% 14%);
+  --text: hsl(0 0% 98%);
+  --accent: hsl(266 100% 70%);
+}
+
+.tilt-card-section {
+  display: flex;
+  flex-direction: column;
+  
+  &__cards {
+    margin: 0;
+    font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+      "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: radial-gradient(
+        1200px 600px at 80% -100px,
+        hsl(266 100% 20% / 0.4),
+        transparent 60%
+      ),
+      radial-gradient(
+        800px 400px at -20% 120%,
+        hsl(200 100% 20% / 0.35),
+        transparent 60%
+      ),
+      var(--bg);
+    display: flex;
+    place-items: center;
+    padding: clamp(24px, 3vw, 48px);
+    gap: 20px;
+  }
+}
+
+.wrap {
+  display: grid;
+  gap: clamp(16px, 2vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  width: min(1100px, 100%);
+}
+
+.demo {
+  perspective: 1000px;
+}
+
+.card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --tz: 0px;
+  --glow: 0.35;
+
+  position: relative;
+  border-radius: 20px;
+  padding: 28px;
+  min-height: 220px;
+  background: linear-gradient(180deg, hsl(238 22% 18%), hsl(238 22% 12%));
+  box-shadow: 0 20px 40px hsl(238 50% 4% / 0.6),
+    inset 0 0 0 1px hsl(0 0% 100% / 0.04);
+  transform-style: preserve-3d;
+  transform: translateZ(var(--tz)) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.35s ease;
+  outline: none;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+      600px 200px at 0% -10%,
+      hsl(0 0% 100% / 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      400px 160px at 120% 110%,
+      hsl(0 0% 100% / 0.06),
+      transparent 60%
+    );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  filter: saturate(calc(1 + var(--glow)));
+  transform: translateZ(1px);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 80px hsl(266 100% 60% / calc(0.15 * var(--glow)));
+  pointer-events: none;
+  transform: translateZ(2px);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.card p {
+  margin: 0;
+  color: hsl(0 0% 90% / 0.8);
+}
+
+.card.simple:hover,
+.card.simple:focus-visible {
+  --rx: 10deg;
+  --ry: -10deg;
+  --tz: 10px;
+  --glow: 0.9;
+  box-shadow: 0 30px 60px hsl(260 80% 40% / 0.25),
+    0 10px 20px hsl(260 100% 60% / 0.25), inset 0 0 0 1px hsl(0 0% 100% / 0.06);
+  background: linear-gradient(180deg, hsl(250 30% 22%), hsl(240 30% 12%));
+}
+
+.card:focus-visible {
+  outline: 3px solid hsl(266 100% 70% / 0.65);
+  outline-offset: 3px;
+}
+
+.card.has-tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  --tz: 0px;
+  --glow: 0.5;
+}
+
+.zones {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  transform: translateZ(3px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.zone {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.zone:where(:hover) {
+  cursor: pointer;
+}
+
+.card.has-tilt:hover {
+  --tz: 8px;
+  --glow: 0.9;
+}
+
+.card.has-tilt:has(.z-tl:hover) {
+  --rx: 10deg;
+  --ry: -10deg;
+}
+
+.card.has-tilt:has(.z-tc:hover) {
+  --rx: 10deg;
+  --ry: 0deg;
+}
+
+.card.has-tilt:has(.z-tr:hover) {
+  --rx: 10deg;
+  --ry: 10deg;
+}
+
+.card.has-tilt:has(.z-ml:hover) {
+  --rx: 0deg;
+  --ry: -10deg;
+}
+
+.card.has-tilt:has(.z-mm:hover) {
+  --rx: 0deg;
+  --ry: 0deg;
+}
+
+.card.has-tilt:has(.z-mr:hover) {
+  --rx: 0deg;
+  --ry: 10deg;
+}
+
+.card.has-tilt:has(.z-bl:hover) {
+  --rx: -10deg;
+  --ry: -10deg;
+}
+
+.card.has-tilt:has(.z-bc:hover) {
+  --rx: -10deg;
+  --ry: 0deg;
+}
+
+.card.has-tilt:has(.z-br:hover) {
+  --rx: -10deg;
+  --ry: 10deg;
+}
+
+.card.has-tilt:has(.z-tl:hover)::before {
+  background: radial-gradient(
+      600px 200px at 0% -10%,
+      hsl(0 0% 100% / 0.2),
+      transparent 60%
+    ),
+    radial-gradient(
+      400px 160px at 120% 110%,
+      hsl(0 0% 100% / 0.04),
+      transparent 60%
+    );
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+  background: hsl(266 100% 64% / 0.14);
+  color: hsl(266 100% 80%);
+  border: 1px solid hsl(266 100% 70% / 0.25);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  transform: translateZ(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+    transform: none !important;
+  }
+  .zones {
+    display: none;
+  }
+}
