@@ -34,4 +34,19 @@
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5em;
   }
+
+  &__description {
+    color: rgba(102, 102, 102, 1);
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 2em;
+
+    &-code {
+      background: rgba(244, 244, 244, 1);
+      border-radius: 4px;
+      color: rgba(231, 76, 60, 1);
+      font-family: "Courier New", monospace;
+      padding: 0.2em 0.4em;
+    }
+  }
 }

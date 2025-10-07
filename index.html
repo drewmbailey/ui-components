@@ -25,7 +25,7 @@
           </a>
           <a 
             class="navigation__item" 
-            href="#test"
+            href="#tilt-cards"
           >
             3D Tilt Cards
           </a>
@@ -36,7 +36,7 @@
     <main class="main">
       <section id="sin-cos-menu" class="section sin-cos-menu">
         <h2 class="section__title">CSS Trigonometric Functions Menu</h2>
-        <p class="sin-cos-menu__description">
+        <p class="section__description">
           This menu uses CSS
           <code class="sin-cos-menu__description-code">sin()</code>
           and
@@ -79,29 +79,33 @@
 
       <section class="tilt-card-section section">
         <h2 class="section__title">3D Tilt Cards</h2>
+        <p class="section__description">
+          Interactive cards that tilt and glow in 3D space using only modern CSS features like perspective, custom properties, and the <code class="sin-cos-menu__description-code">:has()</code> selector.
+        </p>
 
-        <div class="tilt-card-section__cards">
-          <div class="card simple" tabindex="0" aria-label="Simple CSS tilt card">
-            <span class="tag">CSS‑only</span>
-            <h3>Simple 3D Tilt</h2>
-            <p>Hover or focus to see a smooth perspective tilt, inner glow, and sheen. No JavaScript.</p>
+        <div id="tilt-cards" class="tilt-card-section__cards">
+          <div class="tilt-card tilt-card--simple" tabindex="0" aria-label="Simple CSS tilt card">
+            <span class="tilt-card__tag">CSS only</span>
+            <span class="tilt-card__tag">Fixed tilt</span>
+            <h3 class="tilt-card__title">Simple 3D Tilt</h3>
+            <p class="tilt-card__text">Hover, focus, or touch to see a smooth perspective tilt.</p>
           </div>
 
-          <div class="card has-tilt" tabindex="0" aria-label=":has() cursor‑aware tilt card">
-            <span class="tag">:has() + zones</span>
-            <h3>Cursor‑Aware Tilt</h2>
-            <p>Hover or focus to see a smooth perspective tilt, inner glow, and sheen. No JavaScript.</p>
-            <p>Move your cursor across the card. Nine invisible hover zones drive <code>--rx</code>/<code>--ry</code> via <code>:has()</code>.</p>
-            <div class="zones" aria-hidden="true">
-              <div class="zone z-tl"></div>
-              <div class="zone z-tc"></div>
-              <div class="zone z-tr"></div>
-              <div class="zone z-ml"></div>
-              <div class="zone z-mm"></div>
-              <div class="zone z-mr"></div>
-              <div class="zone z-bl"></div>
-              <div class="zone z-bc"></div>
-              <div class="zone z-br"></div>
+          <div class="tilt-card tilt-card--advanced" tabindex="0" aria-label=":has() cursor‑aware tilt card">
+            <span class="tilt-card__tag">CSS only</span>
+            <span class="tilt-card__tag">Variable tilt</span>
+            <h3 class="tilt-card__title">Cursor‑Aware Tilt</h3>
+            <p class="tilt-card__text">Hover or touch to see a smooth perspective tilt. Nine hover/touch zones will change the orientation of the card.</p>
+            <div class="tilt-card__zones" aria-hidden="true">
+              <div class="tilt-card__zone tilt-card__zone--top-left"></div>
+              <div class="tilt-card__zone tilt-card__zone--top-center"></div>
+              <div class="tilt-card__zone tilt-card__zone--top-right"></div>
+              <div class="tilt-card__zone tilt-card__zone--middle-left"></div>
+              <div class="tilt-card__zone tilt-card__zone--middle-center"></div>
+              <div class="tilt-card__zone tilt-card__zone--middle-right"></div>
+              <div class="tilt-card__zone tilt-card__zone--bottom-left"></div>
+              <div class="tilt-card__zone tilt-card__zone--bottom-center"></div>
+              <div class="tilt-card__zone tilt-card__zone--bottom-right"></div>
             </div>
           </div>
         </div>
